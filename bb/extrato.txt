@@ -1,0 +1,117 @@
+                 SISBB - Sistema de Informações Banco do Brasil                 
+16/10/2014                       Auto-Atendimento                       01:04:41
+                            Extrato de conta corrente                           
+                                                                                
+Agência: 3491-6       Conta: 34651-9
+Cliente: ALYSSON A A MENDONCA
+================================================================================
+Data     Ag.Org  Histórico                 Documento                       Valor
+                                                                                
+30/09/14 000000  Saldo Anterior            0                              0,00 C
+02/10/14 3344-8  Transferência on line     663.344.000.208.000           29,00 C
+                 02/10 3344     208000-1 HOPE DO NORDES                         
+02/10/14 000000  Pagto conta telefone      100.201                      183,76 D
+                 GVT-GLOBAL VILLAGE TELECO                                      
+02/10/14 000000  Renda Fixa LP 100         2                            154,76 C
+06/10/14 3491-6  Transferência on line     613.491.000.037.054        9.000,00 C
+                 06/10 3491      37054-1 FACTA TECNOLOG                         
+06/10/14 000000  Transferência on line     349.100.510.034.055          600,00 D
+                 05/04 3491  510034055-6 JOSE ANTONIO D                         
+06/10/14 000000  Renda Fixa LP 100         2                          8.400,00 D
+07/10/14 3491-6  Compra com Cartão         171.382                       12,40 D
+                 07/10 19:49 LIMENTOS SELECIONA                                 
+07/10/14 5711-8  Saque no TAA              71.902.184.027.043           840,00 D
+                 07/10 19:02 SOP-UNIV.FEDERAL-MG                                
+07/10/14 000000  Pagamento conta luz       100.701                      114,35 D
+                 CEMIG DISTRIBUICAO                                             
+07/10/14 000000  Pagamento de Título       100.702                      186,43 D
+                 BANCO ITAU S.A.                                                
+07/10/14 000000  Renda Fixa LP 100         2                          1.153,18 C
+08/10/14 3491-6  Compra com Cartão         148.331                        8,00 D
+                 08/10 13:25 EST SHOPPING                                       
+08/10/14 000000  Renda Fixa LP 100         2                             50,00 C
+09/10/14 3491-6  Compra com Cartão         145.097                        8,00 D
+                 09/10 12:31 EST SHOPPING                                       
+09/10/14 3491-6  Compra com Cartão         272.704                       57,09 D
+                 09/10 20:11  BURGER                                            
+09/10/14 5711-8  Saque no TAA              91.118.334.027.043            15,00 D
+                 09/10 11:18 SOP-SHOPPING DEL REY                               
+09/10/14 3491-6  Transferência on line     603.491.000.034.652           35,00 D
+                 09/10 3491      34652-7 MARIO FELIPE A                         
+09/10/14 000000  Pagamento de Título       100.901                      296,43 D
+                 SUBMARINO.COM                                                  
+09/10/14 000000  TED Transf.Eletr.Disponiv 100.902                    2.000,00 D
+09/10/14 000000  Pagamento de Título       100.903                    3.068,42 D
+                 BANCO ITAU S.A.                                                
+09/10/14 000000  Renda Fixa LP 100         2                          5.437,94 C
+10/10/14 3491-6  Transferência on line     603.491.000.034.652          123,57 C
+                 10/10 3491      34652-7 MARIO FELIPE A                         
+10/10/14 3491-6  Compra com Cartão         135.793                       95,92 D
+                 10/10 09:56                                                    
+10/10/14 000000  Pagamento de Título       101.001                      197,97 D
+                 BANCO ITAU S.A.                                                
+10/10/14 000000  Pagto Mensalidade Seguro  1.597                        463,65 D
+10/10/14 000000  Renda Fixa LP 100         2                            633,97 C
+13/10/14 3491-6  Transferência on line     603.491.000.034.652            1,00 C
+                 13/10 3491      34652-7 MARIO FELIPE A                         
+13/10/14 3491-6  Compra com Cartão         145.471                       19,50 D
+                 11/10 12:37                                                    
+13/10/14 3491-6  Compra com Cartão         260.096                        6,00 D
+                 11/10 16:41 PLAN ADM DE                                        
+13/10/14 3491-6  Compra com Cartão         368.346                        3,45 D
+                 12/10 18:59 AO                                                 
+13/10/14 000000  Pagamento de Telefone     15.732                        85,83 D
+13/10/14 000000  Renda Fixa LP 100         2                            113,78 C
+14/10/14 1228-9  Saque no TAA              141.818.144.027.043          110,00 D
+                 14/10 18:18 CARREFOUR-PAMPULHA                                 
+14/10/14 000000  Renda Fixa LP 100         2                            110,00 C
+15/10/14 9001-8  TV por assinatura         41.843                       249,90 D
+15/10/14 3491-6  Pagamento de Título       101.501                      148,91 D
+                 BANCO BRADESCO S.A.                                            
+16/10/14 000000  S A L D O                 0                            398,81 D
+--------------------------------------------------------------------------------
+Invest.com Resgate Autom.                                             5.912,02 C
+Saldo Disponivel                                                      5.513,21 C
+Juros                                                                       0,00
+Data de Debito de Juros                                             3./11./20,14
+IOF                                                                         0,00
+Data de Debito de IOF                                               3./11./20,14
+CREDITO BOMPRATODOS*                                                  5.866,00 C
+                                                                                
+================================================================================
+                              Lançamentos  Futuros                              
+                                                                                
+05/11/2014   Transferência online          110.501                        600,00
+                                                                                
+================================================================================
+                        Saldo de Fundos de Investimentos                        
+                                                                                
+BB Renda Fixa LP 100                                                    5.920,61
+T O T A L                                                               5.920,61
+                                                                                
+                ------------------------------------------------                
+                VOCE PODE TER UMA CONTA ESPECIAL BB. PROCURE SUA                
+                AGENCIA E ASSINE O CONTRATO.                                    
+                ================================================                
+                Linhas de Crédito           Crédito BOMPRATODOS*                
+                ----------------- Crédito Novo -----------------                
+                BB Crédito Automático                   5.866,00                
+                                                                                
+                -------- Financiamentos de Bens/Serviços -------                
+                BB Crd Veículo/Leasing                 19.302,00                
+                BB Crediário/Construção                14.497,00                
+                                                                                
+                *VALORES DE REFERÊNCIA. Sujeitos  a  confirmação                
+                no momento da contratação.                                      
+                ------------------------------------------------                
+                ------------------------------------------------                
+                OBSERVAÇÕES:                                                    
+                   - INFORMAÇÕES PRONAF INDISP. TEMPORARIAMENTE                 
+                ------------------------------------------------                
+                                                                                
+                                                                                
+                Central de Atendimento BB                                       
+                4004 0001 / 0800 729 0001                                       
+                Para deficientes auditivos                                      
+                0800 729 0088                                                   
+

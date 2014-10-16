@@ -1,0 +1,305 @@
+<OFC>
+   <DTD>2</DTD>
+   <CPAGE>1252</CPAGE>
+   <ACCTSTMT>
+      <ACCTFROM>
+         <BANKID>001</BANKID>
+         <BRANCHID>3491-6</BRANCHID>
+         <ACCTID>00000346519</ACCTID>
+         <ACCTTYPE>0</ACCTTYPE>
+      </ACCTFROM>
+      <STMTRS>
+         <DTSTART>20140930</DTSTART>
+         <DTEND>20141016</DTEND>
+         <LEDGER>-398.81</LEDGER>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141002</DTPOSTED>
+            <TRNAMT>29.00</TRNAMT>
+            <FITID>20141002029000</FITID>
+            <CHKNUM>00208000</CHKNUM>
+            <MEMO>Transferência on line - 02/10 3344     208000-1 HOPE DO NORDES</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141002</DTPOSTED>
+            <TRNAMT>-183.76</TRNAMT>
+            <FITID>201410021183760</FITID>
+            <CHKNUM>00100201</CHKNUM>
+            <MEMO>Pagto conta telefone - GVT-GLOBAL VILLAGE TELECO</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141002</DTPOSTED>
+            <TRNAMT>154.76</TRNAMT>
+            <FITID>201410020154760</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141006</DTPOSTED>
+            <TRNAMT>9000.00</TRNAMT>
+            <FITID>2014100609000000</FITID>
+            <CHKNUM>00037054</CHKNUM>
+            <MEMO>Transferência on line - 06/10 3491      37054-1 FACTA TECNOLOG</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141006</DTPOSTED>
+            <TRNAMT>-600.00</TRNAMT>
+            <FITID>201410061600000</FITID>
+            <CHKNUM>10034055</CHKNUM>
+            <MEMO>Transferência on line - 05/04 3491  510034055-6 JOSE ANTONIO D</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141006</DTPOSTED>
+            <TRNAMT>-8400.00</TRNAMT>
+            <FITID>2014100618400000</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141007</DTPOSTED>
+            <TRNAMT>-12.40</TRNAMT>
+            <FITID>20141007112400</FITID>
+            <CHKNUM>00171382</CHKNUM>
+            <MEMO>Compra com Cartão - 07/10 19:49 LIMENTOS SELECIONA</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141007</DTPOSTED>
+            <TRNAMT>-840.00</TRNAMT>
+            <FITID>201410071840000</FITID>
+            <CHKNUM>84027043</CHKNUM>
+            <MEMO>Saque no TAA - 07/10 19:02 SOP-UNIV.FEDERAL-MG</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141007</DTPOSTED>
+            <TRNAMT>-114.35</TRNAMT>
+            <FITID>201410071114350</FITID>
+            <CHKNUM>00100701</CHKNUM>
+            <MEMO>Pagamento conta luz - CEMIG DISTRIBUICAO</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141007</DTPOSTED>
+            <TRNAMT>-186.43</TRNAMT>
+            <FITID>201410071186430</FITID>
+            <CHKNUM>00100702</CHKNUM>
+            <MEMO>Pagamento de Título - BANCO ITAU S.A.</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141007</DTPOSTED>
+            <TRNAMT>1153.18</TRNAMT>
+            <FITID>2014100701153180</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141008</DTPOSTED>
+            <TRNAMT>-8.00</TRNAMT>
+            <FITID>2014100818000</FITID>
+            <CHKNUM>00148331</CHKNUM>
+            <MEMO>Compra com Cartão - 08/10 13:25 EST SHOPPING</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141008</DTPOSTED>
+            <TRNAMT>50.00</TRNAMT>
+            <FITID>20141008050000</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-8.00</TRNAMT>
+            <FITID>2014100918000</FITID>
+            <CHKNUM>00145097</CHKNUM>
+            <MEMO>Compra com Cartão - 09/10 12:31 EST SHOPPING</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-57.09</TRNAMT>
+            <FITID>20141009157090</FITID>
+            <CHKNUM>00272704</CHKNUM>
+            <MEMO>Compra com Cartão - 09/10 20:11  BURGER</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-15.00</TRNAMT>
+            <FITID>20141009115000</FITID>
+            <CHKNUM>34027043</CHKNUM>
+            <MEMO>Saque no TAA - 09/10 11:18 SOP-SHOPPING DEL REY</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-35.00</TRNAMT>
+            <FITID>20141009135000</FITID>
+            <CHKNUM>00034652</CHKNUM>
+            <MEMO>Transferência on line - 09/10 3491      34652-7 MARIO FELIPE A</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-296.43</TRNAMT>
+            <FITID>201410091296430</FITID>
+            <CHKNUM>00100901</CHKNUM>
+            <MEMO>Pagamento de Título - SUBMARINO.COM</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-2000.00</TRNAMT>
+            <FITID>2014100912000000</FITID>
+            <CHKNUM>00100902</CHKNUM>
+            <MEMO>TED Transf.Eletr.Disponiv</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>-3068.42</TRNAMT>
+            <FITID>2014100913068420</FITID>
+            <CHKNUM>00100903</CHKNUM>
+            <MEMO>Pagamento de Título - BANCO ITAU S.A.</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141009</DTPOSTED>
+            <TRNAMT>5437.94</TRNAMT>
+            <FITID>2014100905437940</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141010</DTPOSTED>
+            <TRNAMT>123.57</TRNAMT>
+            <FITID>201410100123570</FITID>
+            <CHKNUM>00034652</CHKNUM>
+            <MEMO>Transferência on line - 10/10 3491      34652-7 MARIO FELIPE A</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141010</DTPOSTED>
+            <TRNAMT>-95.92</TRNAMT>
+            <FITID>20141010195920</FITID>
+            <CHKNUM>00135793</CHKNUM>
+            <MEMO>Compra com Cartão - 10/10 09:56</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141010</DTPOSTED>
+            <TRNAMT>-197.97</TRNAMT>
+            <FITID>201410101197970</FITID>
+            <CHKNUM>00101001</CHKNUM>
+            <MEMO>Pagamento de Título - BANCO ITAU S.A.</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141010</DTPOSTED>
+            <TRNAMT>-463.65</TRNAMT>
+            <FITID>201410101463650</FITID>
+            <CHKNUM>00001597</CHKNUM>
+            <MEMO>Pagto Mensalidade Seguro</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141010</DTPOSTED>
+            <TRNAMT>633.97</TRNAMT>
+            <FITID>201410100633970</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141013</DTPOSTED>
+            <TRNAMT>1.00</TRNAMT>
+            <FITID>2014101301000</FITID>
+            <CHKNUM>00034652</CHKNUM>
+            <MEMO>Transferência on line - 13/10 3491      34652-7 MARIO FELIPE A</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141013</DTPOSTED>
+            <TRNAMT>-19.50</TRNAMT>
+            <FITID>20141013119500</FITID>
+            <CHKNUM>00145471</CHKNUM>
+            <MEMO>Compra com Cartão - 11/10 12:37</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141013</DTPOSTED>
+            <TRNAMT>-6.00</TRNAMT>
+            <FITID>2014101316000</FITID>
+            <CHKNUM>00260096</CHKNUM>
+            <MEMO>Compra com Cartão - 11/10 16:41 PLAN ADM DE</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141013</DTPOSTED>
+            <TRNAMT>-3.45</TRNAMT>
+            <FITID>2014101313450</FITID>
+            <CHKNUM>00368346</CHKNUM>
+            <MEMO>Compra com Cartão - 12/10 18:59 AO</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141013</DTPOSTED>
+            <TRNAMT>-85.83</TRNAMT>
+            <FITID>20141013185830</FITID>
+            <CHKNUM>00015732</CHKNUM>
+            <MEMO>Pagamento de Telefone</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141013</DTPOSTED>
+            <TRNAMT>113.78</TRNAMT>
+            <FITID>201410130113780</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141014</DTPOSTED>
+            <TRNAMT>-110.00</TRNAMT>
+            <FITID>201410141110000</FITID>
+            <CHKNUM>44027043</CHKNUM>
+            <MEMO>Saque no TAA - 14/10 18:18 CARREFOUR-PAMPULHA</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>0</TRNTYPE>
+            <DTPOSTED>20141014</DTPOSTED>
+            <TRNAMT>110.00</TRNAMT>
+            <FITID>201410140110000</FITID>
+            <CHKNUM>00000002</CHKNUM>
+            <MEMO>Renda Fixa LP 100</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141015</DTPOSTED>
+            <TRNAMT>-249.90</TRNAMT>
+            <FITID>201410151249900</FITID>
+            <CHKNUM>00041843</CHKNUM>
+            <MEMO>TV por assinatura - Data balanc.: 15/10/2014</MEMO>
+         </STMTTRN>
+         <STMTTRN>
+            <TRNTYPE>1</TRNTYPE>
+            <DTPOSTED>20141015</DTPOSTED>
+            <TRNAMT>-148.91</TRNAMT>
+            <FITID>201410151148910</FITID>
+            <CHKNUM>00101501</CHKNUM>
+            <MEMO>Pagamento de Título - BANCO BRADESCO S.A.</MEMO>
+         </STMTTRN>
+      </STMTRS>
+   </ACCTSTMT>
+</OFC>
