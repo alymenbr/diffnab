@@ -4,6 +4,7 @@ var path = require('path'); //used for file path
 var fs = require('fs-extra'); //File System - for file manipulation
 var parse = require('csv-parse');
 var _ = require('underscore');
+var csv = require('csv');
 
 var app = express();
 app.use(busboy());
@@ -12,52 +13,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var ynabFileName = null;
 var bankFileName = null;
-/* ========================================================== 
-Create a Route (/upload) to handle the Form submission 
-(handle POST requests to /upload)
-Express v4  Route definition
-============================================================ */
+var _response = null;
+
 app.route('/upload').post(function(req, res, next) {
+    _response = res;
 
-    res.redirect('/doYourThing'); //where to go next    
-    /*
-        var filesCount = 0;
-        var fstream;
-        req.pipe(req.busboy);
-        req.busboy.on('file', function(fieldname, file, filename) {
-            console.log("Uploading " + fieldname + ": " + filename);
+    var filesCount = 0;
+    var fstream;
+    req.pipe(req.busboy);
+    req.busboy.on('file', function(fieldname, file, filename) {
+        console.log("Uploading " + fieldname + ": " + filename);
 
-            if (fieldname == 'ynabFile')
-                ynabFileName = filename;
+        if (fieldname == 'ynabFile')
+            ynabFileName = filename;
 
-            if (fieldname == 'bankFile')
-                bankFileName = filename;
+        if (fieldname == 'bankFile')
+            bankFileName = filename;
 
-            //Path where image will be uploaded
-            fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
-            file.pipe(fstream);
-            fstream.on('close', function() {
-                console.log("Upload Finished of " + filename);
+        //Path where file will be uploaded
+        fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
+        file.pipe(fstream);
+        fstream.on('close', function() {
+            console.log("Upload Finished of " + filename);
 
-                filesCount++;
-                if (filesCount == 2)
-                    res.redirect('/doYourThing'); //where to go next
-            });
+            filesCount++;
+            if (filesCount == 2)
+                doYourThing(ynabFileName, bankFileName); //where to go next
         });
-    */
+    });
 });
-
-
-/// Show files
-app.get('/doYourThing', function(req, res) {
-    //    var ynabContent = fs.readFileSync(__dirname + "/uploads/" + ynabFileName);
-    //    var bankContent = fs.readFileSync(__dirname + "/uploads/" + bankFileName);
-    var ynabContent = fs.readFileSync(__dirname + "/tests/" + '0_ynab_same.csv');
-    var bankContent = fs.readFileSync(__dirname + "/tests/" + '0_bank_same.csv');
-
-    doYourThing(ynabContent, bankContent);
-});
-
 
 
 var server = app.listen(8080, function() {
@@ -65,7 +49,9 @@ var server = app.listen(8080, function() {
 });
 
 
-function doYourThing(ynabContent, bankContent) {
+function doYourThing(ynabFileName, bankFileName) {
+    var ynabContent = fs.readFileSync(__dirname + "/uploads/" + ynabFileName);
+    var bankContent = fs.readFileSync(__dirname + "/uploads/" + bankFileName);
 
     step_parseYnab(ynabContent, bankContent);
 }
@@ -131,44 +117,45 @@ function step_calcInserts(ynabParsed, bankParsed) {
 
 
 function isBankLineMissing(bankLine, ynabParsed) {
+    var result = true;
 
     _.each(ynabParsed, function(ynabLine) {
         var isEqual = compareLines(bankLine, ynabLine);
 
         if (isEqual)
-            return false;
+            result = false;
     });
 
-    return true;
+    return result;
 }
 
 function isYnabLineMissing(ynabLine, bankParsed) {
+    var result = true;
 
     _.each(bankParsed, function(bankLine) {
         var isEqual = compareLines(bankLine, ynabLine);
 
         if (isEqual)
-            return false;
+            result = false;
     });
 
-    return true;
+    return result;
 }
 
 
 function compareLines(bankLine, ynabLine) {
     var bankData = getBankLineData(bankLine);
     var ynabData = getYnabLineData(ynabLine);
-
-    log('compareLines', 'compareLines', (JSON.stringify(bankData) + "\n\n\n" + JSON.stringify(ynabData)));
+    var result = false;
 
 
     if (bankData.dia == ynabData.dia &&
         bankData.mes == ynabData.mes &&
         bankData.ano == ynabData.ano &&
         bankData.valor == ynabData.valor)
-        return true;
+        result = true;
 
-    return false;
+    return result;
 }
 
 // return {dia, mes, ano, data, valor, info}
@@ -196,24 +183,18 @@ function getYnabLineData(line) {
     result.mes = line[3].substring(3, 5); // 30 from 30/09/2014 
     result.ano = line[3].substring(6, 10); // 30 from 30/09/2014 
     result.data = result.dia + "/" + result.mes + "/" + result.ano;
-    result.info = line[8]; // MEMO column
+    result.info = line[7] + ':' + line[8]; // MEMO column
 
     // OUTFLOW
-    if (line[8] != "R$0,00")
-        result.valor = '-' + line[9].slice(2, 0); // R$249,90 into -249,90
+    if (line[9] != "R$0,00")
+        result.valor = '-' + line[9].substring(2, line[9].length); // R$249,90 into -249,90
 
     // INFLOW
-    if (line[9] != "R$0,00")
-        result.valor = line[10].slice(2, 0); // R$249,90 into 249,90    
+    if (line[10] != "R$0,00")
+        result.valor = line[10].substring(2, line[9].length); // R$249,90 into 249,90    
 
     result.valor = result.valor.replace(',', '.'); // 249,90 into 249.90
     result.valor = parseFloat(result.valor); // 249.90 as float
-
-
-
-    log('getYnabLineData', 'getYnabLineData', (line + "\n\n\n" + JSON.stringify(result)));
-
-
 
     return result;
 }
@@ -234,11 +215,6 @@ function step_calcRemovals(ynabParsed, bankParsed, insertList) {
 }
 
 function step_generateResultContent(insertList, removalList) {
-
-    log('step_generateResultContent', 'insertList', insertList);
-    log('step_generateResultContent', 'removalList', removalList);
-
-
 
     var content = "Date,Payee,Category,Memo,Outflow,Inflow\n";
 
@@ -261,30 +237,7 @@ function step_generateResultContent(insertList, removalList) {
 
 function step_generateResultFile(content) {
 
-    log('step_generateResultFile', 'content', content);
-
-    var file = '/uploads/result.csv';
-
-    fs.outputFileSync(file, content, function(err) {
-        console.log(err); //null
-
-
-        fs.readFileSync(file, 'utf8', function(err, savedFile) {
-
-            // RESPONSE
-            res.writeHead(200, {
-                'Content-Type': 'text/csv'
-            });
-            res.end(savedFile, 'binary');
-        });
-    });
-}
-
-
-function log(method, name, value) {
-    console.log('');
-    console.log('');
-    console.log('------------------------------------------');
-    console.log(method + ' - ' + name);
-    console.log(value);
+    // RESPONSE
+    _response.attachment('testing.csv');
+    _response.end(content, 'binary');
 }
