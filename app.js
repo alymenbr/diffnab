@@ -43,8 +43,8 @@ app.route('/upload').post(function(req, res, next) {
     });
 });
 
-
-var server = app.listen(8080, function() {
+var port = process.env.PORT || 8080;
+var server = app.listen(port, function() {
     console.log('Listening on port %d', server.address().port);
 });
 
