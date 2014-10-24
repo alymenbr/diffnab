@@ -222,9 +222,9 @@ function step_generateResultContent(insertList, removalList) {
 
     _.each(insertList, function(line) {
         if (line.valor > 0)
-            content += line.data + ",DIFF,,ADD - " + line.info + ",," + line.valor + "\n";
+            content += line.data + ",DIFF,," + line.info + ",," + line.valor + "\n";
         else
-            content += line.data + ",DIFF,,ADD - " + line.info + "," + Math.abs(line.valor) + ",\n";
+            content += line.data + ",DIFF,," + line.info + "," + Math.abs(line.valor) + ",\n";
     });
 
     _.each(removalList, function(line) {
