@@ -18,6 +18,9 @@ var _response = null;
 app.route('/upload').post(function(req, res, next) {
     _response = res;
 
+    ynabFileName = null;
+    bankFileName = null;    
+
     var filesCount = 0;
     var fstream;
     req.pipe(req.busboy);
