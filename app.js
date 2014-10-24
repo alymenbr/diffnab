@@ -19,7 +19,7 @@ app.route('/upload').post(function(req, res, next) {
     _response = res;
 
     ynabFileName = null;
-    bankFileName = null;    
+    bankFileName = null;
 
     var filesCount = 0;
     var fstream;
@@ -34,7 +34,7 @@ app.route('/upload').post(function(req, res, next) {
             bankFileName = filename;
 
         //Path where file will be uploaded
-        fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
+        fstream = fs.createWriteStream(__dirname + '/public/' + filename);
         file.pipe(fstream);
         fstream.on('close', function() {
             console.log("Upload Finished of " + filename);
@@ -52,8 +52,8 @@ var server = app.listen((process.env.PORT || 5000), function() {
 
 
 function doYourThing(ynabFileName, bankFileName) {
-    var ynabContent = fs.readFileSync(__dirname + "/uploads/" + ynabFileName);
-    var bankContent = fs.readFileSync(__dirname + "/uploads/" + bankFileName);
+    var ynabContent = fs.readFileSync(__dirname + "/public/" + ynabFileName);
+    var bankContent = fs.readFileSync(__dirname + "/public/" + bankFileName);
 
     step_parseYnab(ynabContent, bankContent);
 }
@@ -242,8 +242,8 @@ function step_generateResultContent(insertList, removalList) {
 function step_generateResultFile(content) {
 
     // REMOVE TEMP FILES
-    fs.unlinkSync(__dirname + '/uploads/' + ynabFileName);
-    fs.unlinkSync(__dirname + '/uploads/' + bankFileName);
+    fs.unlinkSync(__dirname + '/public/' + ynabFileName);
+    fs.unlinkSync(__dirname + '/public/' + bankFileName);
 
 
     // RESPONSE
