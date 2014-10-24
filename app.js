@@ -118,31 +118,31 @@ function step_calcInserts(ynabParsed, bankParsed) {
 
 
 function isBankLineMissing(bankLine, ynabParsed) {
-    var result = true;
+        var result = true;
 
-    _.each(ynabParsed, function(ynabLine) {
-        var isEqual = compareLines(bankLine, ynabLine);
+        _.each(ynabParsed, function(ynabLine) {
+            var isEqual = compareLines(bankLine, ynabLine);
 
-        if (isEqual)
-            result = false;
-    });
+            if (isEqual)
+                result = false;
+        });
 
-    return result;
-}
-/*
-function isYnabLineMissing(ynabLine, bankParsed) {
-    var result = true;
+        return result;
+    }
+    /*
+    function isYnabLineMissing(ynabLine, bankParsed) {
+        var result = true;
 
-    _.each(bankParsed, function(bankLine) {
-        var isEqual = compareLines(bankLine, ynabLine);
+        _.each(bankParsed, function(bankLine) {
+            var isEqual = compareLines(bankLine, ynabLine);
 
-        if (isEqual)
-            result = false;
-    });
+            if (isEqual)
+                result = false;
+        });
 
-    return result;
-}
-*/
+        return result;
+    }
+    */
 
 function compareLines(bankLine, ynabLine) {
     var bankData = getBankLineData(bankLine);
@@ -177,44 +177,44 @@ function getBankLineData(line) {
 
 // return {dia, mes, ano, data, valor, info}
 function getYnabLineData(line) {
-    var result = {};
+        var result = {};
 
 
-    result.dia = line[3].substring(0, 2); // 30 from 30/09/2014 
-    result.mes = line[3].substring(3, 5); // 30 from 30/09/2014 
-    result.ano = line[3].substring(6, 10); // 30 from 30/09/2014 
-    result.data = result.dia + "/" + result.mes + "/" + result.ano;
-    result.info = line[7] + ':' + line[8]; // MEMO column
+        result.dia = line[3].substring(0, 2); // 30 from 30/09/2014 
+        result.mes = line[3].substring(3, 5); // 30 from 30/09/2014 
+        result.ano = line[3].substring(6, 10); // 30 from 30/09/2014 
+        result.data = result.dia + "/" + result.mes + "/" + result.ano;
+        result.info = line[7] + ':' + line[8]; // MEMO column
 
-    // OUTFLOW
-    if (line[9] != "R$0,00")
-        result.valor = '-' + line[9].substring(2, line[9].length); // R$249,90 into -249,90
+        // OUTFLOW
+        if (line[9] != "R$0,00")
+            result.valor = '-' + line[9].substring(2, line[9].length); // R$249,90 into -249,90
 
-    // INFLOW
-    if (line[10] != "R$0,00")
-        result.valor = line[10].substring(2, line[9].length); // R$249,90 into 249,90    
+        // INFLOW
+        if (line[10] != "R$0,00")
+            result.valor = line[10].substring(2, line[9].length); // R$249,90 into 249,90    
 
-    result.valor = result.valor.replace(',', '.'); // 249,90 into 249.90
-    result.valor = parseFloat(result.valor); // 249.90 as float
+        result.valor = result.valor.replace(',', '.'); // 249,90 into 249.90
+        result.valor = parseFloat(result.valor); // 249.90 as float
 
-    return result;
-}
-/*
-function step_calcRemovals(ynabParsed, bankParsed, insertList) {
+        return result;
+    }
+    /*
+    function step_calcRemovals(ynabParsed, bankParsed, insertList) {
 
-    var removalList = [];
-    _.each(ynabParsed, function(ynabLine) {
-        var isMissing = isYnabLineMissing(ynabLine, bankParsed);
+        var removalList = [];
+        _.each(ynabParsed, function(ynabLine) {
+            var isMissing = isYnabLineMissing(ynabLine, bankParsed);
 
-        if (isMissing) {
-            var data = getYnabLineData(ynabLine);
-            removalList.push(data);
-        }
-    });
+            if (isMissing) {
+                var data = getYnabLineData(ynabLine);
+                removalList.push(data);
+            }
+        });
 
-    step_generateResultContent(insertList, removalList);
-}
-*/
+        step_generateResultContent(insertList, removalList);
+    }
+    */
 
 function step_generateResultContent(insertList, removalList) {
 
@@ -238,6 +238,11 @@ function step_generateResultContent(insertList, removalList) {
 }
 
 function step_generateResultFile(content) {
+
+    // REMOVE TEMP FILES
+    fs.unlinkSync(__dirname + '/uploads/' + ynabFileName);
+    fs.unlinkSync(__dirname + '/uploads/' + bankFileName);
+
 
     // RESPONSE
     _response.attachment('result.csv');
