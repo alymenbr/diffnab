@@ -1,0 +1,21 @@
+{
+  "name": "diffnab",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "4.9.7",
+    "connect-busboy": "0.0.2",
+    "path": "0.4.9",
+    "fs-extra": "0.12.0",
+    "csv-parse": "0.0.6",
+    "underscore": "1.7.0",
+    "csv": "0.4.0"
+  },
+  "engines": {
+    "node": "0.10.31",
+    "npm": "1.4.23"
+  }
+}
