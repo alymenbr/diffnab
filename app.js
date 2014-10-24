@@ -112,7 +112,8 @@ function step_calcInserts(ynabParsed, bankParsed) {
         }
     });
 
-    step_calcRemovals(ynabParsed, bankParsed, insertList);
+    //step_calcRemovals(ynabParsed, bankParsed, insertList);
+    step_generateResultContent(insertList, []);
 }
 
 
@@ -128,7 +129,7 @@ function isBankLineMissing(bankLine, ynabParsed) {
 
     return result;
 }
-
+/*
 function isYnabLineMissing(ynabLine, bankParsed) {
     var result = true;
 
@@ -141,7 +142,7 @@ function isYnabLineMissing(ynabLine, bankParsed) {
 
     return result;
 }
-
+*/
 
 function compareLines(bankLine, ynabLine) {
     var bankData = getBankLineData(bankLine);
@@ -198,7 +199,7 @@ function getYnabLineData(line) {
 
     return result;
 }
-
+/*
 function step_calcRemovals(ynabParsed, bankParsed, insertList) {
 
     var removalList = [];
@@ -213,6 +214,7 @@ function step_calcRemovals(ynabParsed, bankParsed, insertList) {
 
     step_generateResultContent(insertList, removalList);
 }
+*/
 
 function step_generateResultContent(insertList, removalList) {
 
@@ -238,6 +240,6 @@ function step_generateResultContent(insertList, removalList) {
 function step_generateResultFile(content) {
 
     // RESPONSE
-    _response.attachment('testing.csv');
+    _response.attachment('result.csv');
     _response.end(content, 'binary');
 }
