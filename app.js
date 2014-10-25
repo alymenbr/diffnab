@@ -11,37 +11,37 @@ app.use(busboy());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-var ynabFileName = null;
-var bankFileName = null;
-var _response = null;
-
 app.route('/upload').post(function(req, res, next) {
     _response = res;
 
-    ynabFileName = null;
-    bankFileName = null;
+    var ynabFileName = null;
+    var bankFileName = null;
 
-    var filesCount = 0;
-    var fstream;
-    req.pipe(req.busboy);
-    req.busboy.on('file', function(fieldname, file, filename) {
-        console.log("Uploading " + fieldname + ": " + filename);
+    var uploadDir = __dirname + '/temp/';
+    fs.ensureDir(uploadDir, function(err) {
 
-        if (fieldname == 'ynabFile')
-            ynabFileName = filename;
+        var filesCount = 0;
+        var fstream;
+        req.pipe(req.busboy);
+        req.busboy.on('file', function(fieldname, file, filename) {
+            console.log("Uploading " + fieldname + ": " + filename);
 
-        if (fieldname == 'bankFile')
-            bankFileName = filename;
+            if (fieldname == 'ynabFile')
+                ynabFileName = filename;
 
-        //Path where file will be uploaded
-        fstream = fs.createWriteStream(__dirname + '/public/' + filename);
-        file.pipe(fstream);
-        fstream.on('close', function() {
-            console.log("Upload Finished of " + filename);
+            if (fieldname == 'bankFile')
+                bankFileName = filename;
 
-            filesCount++;
-            if (filesCount == 2)
-                doYourThing(ynabFileName, bankFileName); //where to go next
+            //Path where file will be uploaded
+            fstream = fs.createWriteStream(__dirname + '/temp/' + filename);
+            file.pipe(fstream);
+            fstream.on('close', function() {
+                console.log("Upload Finished of " + filename);
+
+                filesCount++;
+                if (filesCount == 2)
+                    doYourThing(ynabFileName, bankFileName, res); //where to go next
+            });
         });
     });
 });
@@ -51,24 +51,28 @@ var server = app.listen((process.env.PORT || 5000), function() {
 });
 
 
-function doYourThing(ynabFileName, bankFileName) {
-    var ynabContent = fs.readFileSync(__dirname + "/public/" + ynabFileName);
-    var bankContent = fs.readFileSync(__dirname + "/public/" + bankFileName);
+function doYourThing(ynabFileName, bankFileName, response) {
+    var ynabContent = fs.readFileSync(__dirname + "/temp/" + ynabFileName);
+    var bankContent = fs.readFileSync(__dirname + "/temp/" + bankFileName);
 
-    step_parseYnab(ynabContent, bankContent);
+    // REMOVE TEMP FILES
+    fs.unlinkSync(__dirname + '/temp/' + ynabFileName);
+    fs.unlinkSync(__dirname + '/temp/' + bankFileName);
+
+    step_parseYnab(ynabContent, bankContent, response);
 }
 
-function step_parseYnab(ynabContent, bankContent, next) {
+function step_parseYnab(ynabContent, bankContent, response) {
     parse(ynabContent.toString(), {
         delimiter: '\t'
     }, function(err, output) {
         var ynabParsed = output.slice(1, output.length); // remove header
 
-        step_parseBank(ynabParsed, bankContent);
+        step_parseBank(ynabParsed, bankContent, response);
     });
 }
 
-function step_parseBank(ynabParsed, bankContent) {
+function step_parseBank(ynabParsed, bankContent, response) {
     parse(bankContent.toString(), {
         delimiter: ','
     }, function(err, output) {
@@ -77,9 +81,43 @@ function step_parseBank(ynabParsed, bankContent) {
 
         removeUnwantedBankLines(bankParsed);
 
-        step_calcInserts(ynabParsed, bankParsed);
+        step_calcInserts(ynabParsed, bankParsed, response);
     });
 }
+
+function step_calcInserts(ynabParsed, bankParsed, response) {
+
+    var insertList = [];
+    _.each(bankParsed, function(bankLine) {
+        var isMissing = isBankLineMissing(bankLine, ynabParsed);
+
+        if (isMissing) {
+            var data = getBankLineData(bankLine);
+            insertList.push(data);
+        }
+    });
+
+    step_generateResponse(insertList, response);
+}
+
+function step_generateResponse(insertList, response) {
+
+    var content = "Date,Payee,Category,Memo,Outflow,Inflow\n";
+
+    _.each(insertList, function(line) {
+        if (line.valor > 0)
+            content += line.data + ",DIFF,," + line.info + ",," + line.valor + "\n";
+        else
+            content += line.data + ",DIFF,," + line.info + "," + Math.abs(line.valor) + ",\n";
+    });
+
+    response.attachment('result.csv');
+    response.end(content, 'binary');
+}
+
+
+
+
 
 function removeUnwantedBankLines(bankParsed) {
     var i = 0;
@@ -102,49 +140,18 @@ function removeUnwantedBankLines(bankParsed) {
     }
 }
 
-function step_calcInserts(ynabParsed, bankParsed) {
+function isBankLineMissing(bankLine, ynabParsed) {
+    var result = true;
 
-    var insertList = [];
-    _.each(bankParsed, function(bankLine) {
-        var isMissing = isBankLineMissing(bankLine, ynabParsed);
+    _.each(ynabParsed, function(ynabLine) {
+        var isEqual = compareLines(bankLine, ynabLine);
 
-        if (isMissing) {
-            var data = getBankLineData(bankLine);
-            insertList.push(data);
-        }
+        if (isEqual)
+            result = false;
     });
 
-    //step_calcRemovals(ynabParsed, bankParsed, insertList);
-    step_generateResultContent(insertList, []);
+    return result;
 }
-
-
-function isBankLineMissing(bankLine, ynabParsed) {
-        var result = true;
-
-        _.each(ynabParsed, function(ynabLine) {
-            var isEqual = compareLines(bankLine, ynabLine);
-
-            if (isEqual)
-                result = false;
-        });
-
-        return result;
-    }
-    /*
-    function isYnabLineMissing(ynabLine, bankParsed) {
-        var result = true;
-
-        _.each(bankParsed, function(bankLine) {
-            var isEqual = compareLines(bankLine, ynabLine);
-
-            if (isEqual)
-                result = false;
-        });
-
-        return result;
-    }
-    */
 
 function compareLines(bankLine, ynabLine) {
     var bankData = getBankLineData(bankLine);
@@ -179,74 +186,25 @@ function getBankLineData(line) {
 
 // return {dia, mes, ano, data, valor, info}
 function getYnabLineData(line) {
-        var result = {};
+    var result = {};
 
 
-        result.dia = line[3].substring(0, 2); // 30 from 30/09/2014 
-        result.mes = line[3].substring(3, 5); // 30 from 30/09/2014 
-        result.ano = line[3].substring(6, 10); // 30 from 30/09/2014 
-        result.data = result.dia + "/" + result.mes + "/" + result.ano;
-        result.info = line[7] + ':' + line[8]; // MEMO column
+    result.dia = line[3].substring(0, 2); // 30 from 30/09/2014 
+    result.mes = line[3].substring(3, 5); // 30 from 30/09/2014 
+    result.ano = line[3].substring(6, 10); // 30 from 30/09/2014 
+    result.data = result.dia + "/" + result.mes + "/" + result.ano;
+    result.info = line[7] + ':' + line[8]; // MEMO column
 
-        // OUTFLOW
-        if (line[9] != "R$0,00")
-            result.valor = '-' + line[9].substring(2, line[9].length); // R$249,90 into -249,90
+    // OUTFLOW
+    if (line[9] != "R$0,00")
+        result.valor = '-' + line[9].substring(2, line[9].length); // R$249,90 into -249,90
 
-        // INFLOW
-        if (line[10] != "R$0,00")
-            result.valor = line[10].substring(2, line[9].length); // R$249,90 into 249,90    
+    // INFLOW
+    if (line[10] != "R$0,00")
+        result.valor = line[10].substring(2, line[9].length); // R$249,90 into 249,90    
 
-        result.valor = result.valor.replace(',', '.'); // 249,90 into 249.90
-        result.valor = parseFloat(result.valor); // 249.90 as float
+    result.valor = result.valor.replace(',', '.'); // 249,90 into 249.90
+    result.valor = parseFloat(result.valor); // 249.90 as float
 
-        return result;
-    }
-    /*
-    function step_calcRemovals(ynabParsed, bankParsed, insertList) {
-
-        var removalList = [];
-        _.each(ynabParsed, function(ynabLine) {
-            var isMissing = isYnabLineMissing(ynabLine, bankParsed);
-
-            if (isMissing) {
-                var data = getYnabLineData(ynabLine);
-                removalList.push(data);
-            }
-        });
-
-        step_generateResultContent(insertList, removalList);
-    }
-    */
-
-function step_generateResultContent(insertList, removalList) {
-
-    var content = "Date,Payee,Category,Memo,Outflow,Inflow\n";
-
-    _.each(insertList, function(line) {
-        if (line.valor > 0)
-            content += line.data + ",DIFF,," + line.info + ",," + line.valor + "\n";
-        else
-            content += line.data + ",DIFF,," + line.info + "," + Math.abs(line.valor) + ",\n";
-    });
-
-    _.each(removalList, function(line) {
-        if (line.valor > 0)
-            content += line.data + ",DIFF,,REMOVE - " + line.info + ",," + line.valor + "\n";
-        else
-            content += line.data + ",DIFF,,REMOVE - " + line.info + "," + Math.abs(line.valor) + ",\n";
-    });
-
-    step_generateResultFile(content);
-}
-
-function step_generateResultFile(content) {
-
-    // REMOVE TEMP FILES
-    fs.unlinkSync(__dirname + '/public/' + ynabFileName);
-    fs.unlinkSync(__dirname + '/public/' + bankFileName);
-
-
-    // RESPONSE
-    _response.attachment('result.csv');
-    _response.end(content, 'binary');
+    return result;
 }
