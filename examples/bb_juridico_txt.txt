@@ -1,0 +1,43 @@
+================================================================================
+Extrato conta corrente                                       A33G030951394602007
+                                                             03/11/2014 10:10:41
+--------------------------------------------------------------------------------
+Cliente - Cliente atual
+--------------------------------------------------------------------------------
+Agência                       3491-6
+Conta corrente                37054-1 FACTA TECNOLOGIA LTDA
+Período do extrato            17/09/2014 até 29/09/2014
+--------------------------------------------------------------------------------
+Lançamentos
+--------------------------------------------------------------------------------
+ Dt. movimento  Dt. balancete Histórico                          Documento         Valor R$            Saldo
+   16/09/2014                 Saldo Anterior                                                          0,00 C
+   17/09/2014     16/09/2014  Resgate BB CDB DI          1.800.642.427.035         339,68 C                 
+   17/09/2014     16/09/2014  Estorno Resgate Automátic                  5         194,19 D                 
+   17/09/2014     16/09/2014  BB Curto Prazo Automático                  5         145,49 D           0,00 C
+   23/09/2014                 Transferência on line    613.491.000.034.651         915,18 D                 
+   23/09/2014                 Emissão de DOC                        92.301         600,00 D                 
+   23/09/2014                 TARIFA DE DOCeletronico  882.660.900.091.368           7,80 D                 
+   23/09/2014                 BB Curto Prazo Automático                  5         683,71 C                 
+   23/09/2014                 Resgate BB CDB DI                         98       1.000,00 C                 
+   23/09/2014                 BB Curto Prazo Automático                  5         160,73 D           0,00 C
+   24/09/2014     23/09/2014  Resgate BB CDB DI          1.800.642.427.035          32,32 C                 
+   24/09/2014     23/09/2014  Estorno Resgate Automátic                  5         683,71 D                 
+   24/09/2014     23/09/2014  BB Curto Prazo Automático                  5         651,39 C           0,00 C
+   26/09/2014                 TED-Crédito em Conta               3.579.482       3.000,00 C                 
+   26/09/2014                 TED-Crédito em Conta               3.580.354       2.500,00 C                 
+   26/09/2014                 BB Curto Prazo Automático                  5       5.500,00 D           0,00 C
+   29/09/2014                 S A L D O                                              0,00 C           0,00 C
+--------------------------------------------------------------------------------
+               ------------------------------------------------
+               OBSERVAÇÕES:
+               ------------------------------------------------
+               
+               
+               Central de Atendimento BB
+               4004 0001 / 0800 729 0001
+               Para deficientes auditivos
+               0800 729 0088
+
+--------------------------------------------------------------------------------
+Transação efetuada com sucesso por: J8941851 ALYSSON ANTHONY ALMEIDA MENDONCA
