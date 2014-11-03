@@ -2,25 +2,151 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>File upload</title>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="shortcut icon" href="startup/flat-ui/images/favicon.ico">
+
+    <link rel="stylesheet" href="startup/flat-ui/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="startup/flat-ui/css/flat-ui.css">
+    <!-- Using only with Flat-UI (free)-->
+    <link rel="stylesheet" href="startup/common-files/css/icon-font.css">
+    <!-- end -->
+    <link rel="stylesheet" href="startup/common-files/css/animations.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/custom.css">
+
+    <title>DiffNab</title>
 </head>
 
 <body>
-    <form method='post' action='upload' enctype="multipart/form-data">
-        <div>
-            <p>Ynab File:</p>
-            <input type='file' name='ynabFile'>
+    <div class="page-wrapper">
+        <section class="content-12">
+            <a class="wide btn-wide" href="#"><b>DiffNab</b> for Banco do Brasil</a>
+        </section>
+        <section class="projects-4" style="padding-top: 60px; padding-bottom: 60px;">
+            <div class="container">
+                <h3>Just follow these steps:</h3>
+
+                <div class="projects row">
+                    <div class="project-wrapper col-sm-3">
+                        <div class="project">
+                            <div class="photo-wrapper bg-alizarin">
+                                <div class="photo"></div>
+                                <a href="#ynabFile" class="overlay">
+                                    <span class="fui-eye"></span>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="#ynabFile" class="name color-pomegranate">1 - YNAB File</a>
+                                Export a cvs file from YNAB
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-wrapper col-sm-3">
+                        <div class="project">
+                            <div class="photo-wrapper bg-sun-flower">
+                                <div class="photo"></div>
+                                <a href="#bankFile" class="overlay">
+                                    <span class="fui-mic"></span>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="#bankFile" class="name color-orange">2 - Banco do Brasil File</a>
+                                Export a cvs file from BB
+                                <br/>(use the same period as step 1)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-wrapper col-sm-3">
+                        <div class="project">
+                            <div class="photo-wrapper bg-peter-river">
+                                <div class="photo"></div>
+                                <a href="#getResult" class="overlay">
+                                    <span class="fui-cmd"></span>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="#getResult" class="name color-belize-hole">3 - Get the Result</a>
+                                Do it using the form below!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-wrapper col-sm-3">
+                        <div class="project">
+                            <div class="photo-wrapper bg-turquoise">
+                                <div class="photo"></div>
+                                <a href="#getResult" class="overlay">
+                                    <span class="fui-user"></span>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <a href="#getResult" class="name color-green-sea">4 - Import result on YNAB</a>
+                        Import the <em>result</em> file from step 3 on YNAB <br/>
+                        (use <em>Import Transactions from Bank</em> menu) 
+                    </div>
+                </div>
+            </div>
         </div>
-		</br>
+    </div>
+    <!--/.container-->
+    </section>
 
-        <div>
-            <p>Bank File:</p>
-            <input type='file' name='bankFile'>
+    <section class="content-37" style="padding-top: 30px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <h3>Get your result file for Step 3:</h3>
+                    
+
+                    <form method='post' action='upload' enctype="multipart/form-data">
+                            <div class="form">
+                                <div class="form-group" style="padding-bottom: 10px;">
+                                    <label class="control-label">YNAB File (csv)</label>
+                                    <input id="ynabFile" name="ynabFile" type="file" class="form-control" placeholder="YNAB csv file">
+                                </div>
+                                <div class="form-group" style="padding-bottom: 10px;">
+                                    <label class="control-label">Banco do Brasil File (csv)</label>                                
+                                    <input id="bankFile" name="bankFile" type="file" class="form-control" placeholder="BB csv file">
+                                </div>
+                                <button id="getResult" type="submit" class="btn btn-inverse btn-lg hover-green">GIVE ME THE RESULT NOW! </button>
+                            </div>
+                    </form>
+
+
+                </div>
+            </div>
         </div>
-		</br></br>
+    </section> 
 
-        <input type='submit'>
-</body>
+    <footer class="footer-4 bg-midnight-blue">
+    <div class="container">
+        Contact me at <a class="brand" href="http://twitter.com/alymenbr">@alymenbr</a> or fork me at <a class="brand" href="http://github.com/alymenbr/diffnab">Github!</a>
+    </div>
+</footer>
 
+<!-- Placed at the end of the document so the pages load faster -->
+            <script src="startup/common-files/js/jquery-1.10.2.min.js"></script>
+            <script src="startup/common-files/js/jquery.bxslider.min.js"></script>
+            <script src="startup/common-files/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+            <script src="startup/common-files/js/jquery.sharrre.min.js"></script>
+            <script src="startup/flat-ui/js/bootstrap.min.js"></script>
+            <script src="startup/common-files/js/masonry.pkgd.min.js"></script>
+            <script src="startup/common-files/js/modernizr.custom.js"></script>
+            <script src="startup/common-files/js/page-transitions.js"></script>
+            <script src="startup/common-files/js/easing.min.js"></script>
+            <script src="startup/common-files/js/jquery.svg.js"></script>
+            <script src="startup/common-files/js/jquery.svganim.js"></script>
+            <script src="startup/common-files/js/jquery.backgroundvideo.min.js"></script>
+            <script src="startup/common-files/js/froogaloop.min.js"></script>
+            <script src="startup/common-files/js/startup-kit.js"></script>
+        </div>
+    </body>
 </html>
